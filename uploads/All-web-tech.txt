@@ -1,0 +1,285 @@
+1. Frontend (Client-Side)
+
+What users see and interact with in a browser or app.
+
+Core Technologies
+
+HTML – Structure of web pages
+
+CSS – Styling and layout
+
+JavaScript – Interactivity and logic
+
+Frontend Frameworks & Libraries
+
+React – Component-based UI library (most popular)
+
+Angular – Full-featured frontend framework
+
+Vue.js – Lightweight, reactive framework
+
+Svelte – Compiler-based, very fast UI
+
+Styling Tools
+
+CSS3 / Flexbox / Grid
+
+Tailwind CSS – Utility-first CSS
+
+Bootstrap / Material UI – Prebuilt UI components
+
+Sass / Less – CSS preprocessors
+
+Build & Tooling
+
+Vite / Webpack / Parcel – Bundlers
+
+Babel – JavaScript transpiler
+
+ESLint / Prettier – Code quality & formatting
+
+2. Backend (Server-Side)
+
+Handles logic, authentication, APIs, and business rules.
+
+Programming Languages
+
+JavaScript (Node.js)
+
+Python
+
+Java
+
+C#
+
+PHP
+
+Go
+
+Ruby
+
+Backend Frameworks
+
+Express.js / NestJS (Node.js)
+
+Django / Flask / FastAPI (Python)
+
+Spring Boot (Java)
+
+ASP.NET Core (C#)
+
+Laravel (PHP)
+
+Ruby on Rails (Ruby)
+
+API Styles
+
+REST APIs
+
+GraphQL
+
+gRPC
+
+3. Databases
+
+Store and manage application data.
+
+Relational (SQL)
+
+PostgreSQL
+
+MySQL
+
+MariaDB
+
+SQLite
+
+Oracle / SQL Server
+
+NoSQL
+
+MongoDB – Document-based
+
+Redis – In-memory / caching
+
+Cassandra – Distributed
+
+Firebase / Firestore – Cloud NoSQL
+
+DynamoDB – AWS NoSQL
+
+ORMs & Data Tools
+
+Prisma
+
+TypeORM
+
+Sequelize
+
+Hibernate
+
+SQLAlchemy
+
+4. Authentication & Security
+
+Protects users and data.
+
+JWT (JSON Web Tokens)
+
+OAuth 2.0
+
+OpenID Connect
+
+Sessions & Cookies
+
+bcrypt / Argon2 – Password hashing
+
+HTTPS / TLS
+
+CORS / CSRF protection
+
+5. DevOps & Infrastructure
+
+Deployment, scaling, and system reliability.
+
+Cloud Providers
+
+AWS
+
+Azure
+
+Google Cloud Platform (GCP)
+
+DigitalOcean
+
+Vercel / Netlify
+
+Containers & Orchestration
+
+Docker
+
+Kubernetes
+
+CI/CD
+
+GitHub Actions
+
+GitLab CI
+
+Jenkins
+
+CircleCI
+
+Web Servers & Proxies
+
+Nginx
+
+Apache
+
+Caddy
+
+6. Version Control & Collaboration
+
+Managing source code and teamwork.
+
+Git
+
+GitHub
+
+GitLab
+
+Bitbucket
+
+7. Testing
+
+Ensures correctness and quality.
+
+Frontend Testing
+
+Jest
+
+React Testing Library
+
+Cypress
+
+Playwright
+
+Backend Testing
+
+JUnit
+
+PyTest
+
+Mocha / Chai
+
+Postman / Newman
+
+8. Mobile & Cross-Platform (Optional for Full Stack)
+
+If the app extends beyond the web.
+
+React Native
+
+Flutter
+
+Swift (iOS)
+
+Kotlin (Android)
+
+Electron / Tauri (Desktop apps)
+
+9. Messaging, Caching & Background Jobs
+
+For performance and scalability.
+
+Redis – Caching
+
+RabbitMQ
+
+Kafka
+
+BullMQ / Celery
+
+Cron Jobs
+
+10. Monitoring & Logging
+
+Observability and performance tracking.
+
+Prometheus
+
+Grafana
+
+ELK Stack (Elasticsearch, Logstash, Kibana)
+
+Datadog
+
+Sentry
+
+11. CMS & Headless Systems (Optional)
+
+Content-driven apps.
+
+WordPress
+
+Strapi
+
+Sanity
+
+Contentful
+
+Common Full-Stack Technology Combinations
+
+MERN – MongoDB, Express, React, Node.js
+
+MEAN – MongoDB, Express, Angular, Node.js
+
+LAMP – Linux, Apache, MySQL, PHP
+
+JAMstack – JavaScript, APIs, Markup
+
+T3 Stack – TypeScript, Next.js, tRPC, Prisma
+
+In One Line:
+
+Full-stack technologies = Frontend + Backend + Database + DevOps + Security + Testing + Infrastructure

@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lab 03 Assistant</title>
+    <style>
+        /* General Reset and Base Styles */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: #0d1117; /* GitHub Dark mode style background */
+            font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
+            color: #c9d1d9;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        /* Main Container */
+        .container {
+            width: 100%;
+            max-width: 900px;
+            background-color: #0d1117;
+            border: 1px solid #30363d;
+            padding: 20px;
+            border-radius: 6px;
+        }
+
+        /* Header Section */
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #21262d;
+        }
+
+        .path {
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: #3fb950; /* Bright Green */
+        }
+
+        /* CHANGED: Adjusted to support SELECT tag while looking like your DIV */
+        select.model-selector {
+            background-color: #21262d;
+            color: #c9d1d9;
+            padding: 5px 10px;
+            border-radius: 4px;
+            font-size: 0.9rem;
+            border: 1px solid #30363d;
+            cursor: pointer;
+            font-family: inherit;
+            outline: none;
+            /* Custom appearance to match your design */
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            appearance: none;
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="%23c9d1d9" viewBox="0 0 16 16"><path d="M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z"/></svg>');
+            background-repeat: no-repeat;
+            background-position: right 10px center;
+            padding-right: 30px; 
+        }
+
+        /* Terminal Display Area */
+        .terminal-window {
+            background-color: #000000;
+            border: 1px solid #30363d;
+            border-radius: 6px;
+            height: 400px;
+            padding: 20px;
+            overflow-y: auto;
+            margin-bottom: 15px;
+            font-size: 0.95rem;
+            line-height: 1.6;
+            color: #e6edf3;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        /* Scrollbar Styling */
+        .terminal-window::-webkit-scrollbar {
+            width: 10px;
+        }
+        .terminal-window::-webkit-scrollbar-track {
+            background: #0d1117;
+        }
+        .terminal-window::-webkit-scrollbar-thumb {
+            background: #30363d;
+            border-radius: 5px;
+        }
+
+        /* Message Styling (Dynamic) */
+        .message {
+            animation: fadeIn 0.3s ease;
+        }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+        .user {
+            color: #3fb950; /* Green for user */
+        }
+        .user::before {
+            content: "> ";
+            font-weight: bold;
+        }
+
+        .bot {
+            color: #e6edf3; /* White/Grey for bot */
+            white-space: pre-wrap;
+        }
+        .bot::before {
+            content: "# ";
+            color: #d2a8ff; /* Purple for system/bot */
+            font-weight: bold;
+        }
+
+        /* Input Area (Middle) */
+        .input-row {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 25px;
+        }
+
+        .main-input {
+            flex-grow: 1;
+            background-color: #161b22;
+            border: 1px solid #30363d;
+            color: #8b949e;
+            padding: 12px;
+            font-family: inherit;
+            border-radius: 4px;
+            outline: none;
+        }
+
+        .main-input:focus {
+            border-color: #58a6ff;
+            color: #c9d1d9;
+        }
+
+        .run-btn {
+            background-color: #161b22;
+            border: 1px solid #30363d;
+            color: #3fb950;
+            padding: 0 20px;
+            font-family: inherit;
+            font-weight: bold;
+            border-radius: 4px;
+            cursor: pointer;
+            text-transform: uppercase;
+        }
+
+        .run-btn:hover {
+            border-color: #3fb950;
+        }
+
+        /* Bottom Controls Area */
+        .controls-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            border-top: 1px solid #21262d;
+            padding-top: 20px;
+        }
+
+        .control-group {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .label {
+            font-size: 0.8rem;
+            color: #6e7681;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .input-group {
+            display: flex;
+            background-color: #161b22;
+            border: 1px solid #30363d;
+            border-radius: 4px;
+            overflow: hidden;
+            align-items: center;
+        }
+
+        .file-display {
+            padding: 10px;
+            color: #8b949e;
+            flex-grow: 1;
+            display: flex;
+            align-items: center;
+            font-size: 0.85rem;
+        }
+        
+        .choose-file-btn {
+            background-color: #21262d;
+            border: none;
+            border-right: 1px solid #30363d;
+            color: #c9d1d9;
+            padding: 10px 15px;
+            font-family: inherit;
+            cursor: pointer;
+            font-size: 0.9rem;
+        }
+        .choose-file-btn:hover { background-color: #30363d; }
+
+        .url-input {
+            background-color: transparent;
+            border: none;
+            color: #e6edf3;
+            padding: 10px;
+            width: 100%;
+            font-family: inherit;
+            outline: none;
+        }
+
+        .action-btn {
+            background-color: #161b22;
+            border: 1px solid #30363d;
+            color: #3fb950;
+            padding: 12px;
+            font-family: inherit;
+            font-weight: bold;
+            border-radius: 4px;
+            cursor: pointer;
+            text-transform: uppercase;
+            text-align: center;
+            transition: all 0.2s;
+        }
+
+        .action-btn:hover {
+            border-color: #3fb950;
+            background-color: #0d1117;
+        }
+
+        /* Hidden Real Input */
+        #file { display: none; }
+
+        @media (max-width: 600px) {
+            .controls-container { grid-template-columns: 1fr; }
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="header">
+            <div class="path">~/lab_03/assistant</div>
+            <select id="model" class="model-selector">
+                {% for model in models %}
+                <option value="{{ model }}">{{ model }}</option>
+                {% endfor %}
+            </select>
+        </div>
+
+        <div class="terminal-window" id="chatBox">
+            <div class="message bot">System initialized. Awaiting input...</div>
+        </div>
+
+        <div class="input-row">
+            <input type="text" id="question" class="main-input" placeholder="Type command here ...">
+            <button class="run-btn" onclick="askQuestion()">RUN</button>
+        </div>
+
+        <div class="controls-container">
+            
+            <div class="control-group">
+                <div class="label">FILE INPUT STREAM</div>
+                <div class="input-group">
+                    <input type="file" id="file" onchange="updateFileLabel()">
+                    <button class="choose-file-btn" onclick="document.getElementById('file').click()">Choose file</button>
+                    <div class="file-display" id="file-label">No file chosen</div>
+                </div>
+                <button class="action-btn" onclick="uploadFile()">UPLOAD FILE</button>
+            </div>
+
+            <div class="control-group">
+                <div class="label">EXTERNAL URL FETCH</div>
+                <div class="input-group">
+                    <input type="text" id="url" class="url-input" placeholder="https://example.com" value="https://www.scrapethissite.com/pages/">
+                </div>
+                <button class="action-btn" onclick="scrapeWebsite()">FETCH & SUMMARIZE</button>
+            </div>
+
+        </div>
+    </div>
+
+    <script>
+    // Helper to update the visual file label when a file is picked
+    function updateFileLabel() {
+        const fileInput = document.getElementById('file');
+        const fileLabel = document.getElementById('file-label');
+        if (fileInput.files.length > 0) {
+            fileLabel.textContent = fileInput.files[0].name;
+        } else {
+            fileLabel.textContent = "No file chosen";
+        }
+    }
+
+    function appendMessage(message, sender) {
+        const chatBox = document.getElementById("chatBox");
+        const msgDiv = document.createElement("div");
+        msgDiv.classList.add("message", sender);
+        msgDiv.innerText = message;
+        chatBox.appendChild(msgDiv);
+        // Scroll to bottom
+        chatBox.scrollTop = chatBox.scrollHeight;
+    }
+
+    function uploadFile() {
+        let fileInput = document.getElementById("file");
+        if(fileInput.files.length === 0) {
+            alert("Please select a file first.");
+            return;
+        }
+        let file = fileInput.files[0];
+        let formData = new FormData();
+        formData.append("file", file);
+
+        appendMessage("Uploading " + file.name + "...", "user");
+
+        fetch("/upload", {
+            method: "POST",
+            body: formData
+        }).then(res => res.json())
+        .then(data => {
+            appendMessage("📄 Document processed successfully!", "bot");
+        }).catch(err => {
+            appendMessage("❌ Error uploading file.", "bot");
+        });
+    }
+
+    function askQuestion() {
+        let questionInput = document.getElementById("question");
+        let question = questionInput.value;
+        let model = document.getElementById("model").value;
+
+        if (!question) return;
+
+        appendMessage(question, "user");
+        questionInput.value = "";
+
+        fetch("/ask", {
+            method: "POST",
+            headers: {"Content-Type": "application/json"},
+            body: JSON.stringify({question: question, model: model})
+        }).then(res => res.json())
+        .then(data => {
+            appendMessage(data.response, "bot");
+        });
+    }
+
+    function scrapeWebsite() {
+        let url = document.getElementById("url").value;
+        let model = document.getElementById("model").value;
+
+        if (!url) return;
+
+        appendMessage("🌐 Scraping: " + url, "user");
+
+        fetch("/scrape", {
+            method: "POST",
+            headers: {"Content-Type": "application/json"},
+            body: JSON.stringify({url: url, model: model})
+        }).then(res => res.json())
+        .then(data => {
+            appendMessage("📌 Summary:\n" + data.summary, "bot");
+        });
+    }
+    </script>
+
+</body>
+</html>

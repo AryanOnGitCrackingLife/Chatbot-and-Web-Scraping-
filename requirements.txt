@@ -1,0 +1,11 @@
+flask
+langchain
+langchain-community
+ollama
+pypdf
+python-docx
+pandas
+openpyxl
+beautifulsoup4
+requests
+faiss-cpu

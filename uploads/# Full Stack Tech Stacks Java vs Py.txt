@@ -1,0 +1,210 @@
+# Full Stack Tech Stacks: Java vs Python
+
+## **Java Full Stack Tech Stack**
+
+### **Backend**
+- **Core**: Java 17+, JVM
+- **Web Frameworks**: 
+  - Spring Boot (most popular)
+  - Jakarta EE (formerly Java EE)
+  - Micronaut
+  - Quarkus
+  - Play Framework
+  - Vert.x
+
+### **Frontend** (Java typically paired with)
+- **JavaScript Frameworks**: 
+  - React.js (most common)
+  - Angular
+  - Vue.js
+- **Template Engines** (for server-side rendering):
+  - Thymeleaf (Spring)
+  - JavaServer Faces (JSF)
+  - JSP (legacy)
+
+### **Build Tools**
+- Maven
+- Gradle
+- Ant (legacy)
+
+### **Database**
+- **SQL**: 
+  - MySQL, PostgreSQL, Oracle DB
+  - Connection: JDBC, JPA/Hibernate
+- **NoSQL**: 
+  - MongoDB (with Spring Data MongoDB)
+  - Cassandra
+  - Redis
+
+### **API & Communication**
+- REST APIs (Spring MVC, JAX-RS)
+- GraphQL (with libraries like graphql-java)
+- gRPC
+- SOAP (JAX-WS)
+
+### **ORM & Data Access**
+- Hibernate (JPA implementation)
+- Spring Data JPA
+- MyBatis
+
+### **Authentication & Security**
+- Spring Security
+- OAuth2/OpenID Connect
+- JWT (Java JWT libraries)
+
+### **Testing**
+- JUnit 5
+- Mockito
+- TestNG
+- Spring Test
+- Selenium
+
+### **DevOps & Deployment**
+- **Containers**: Docker, Kubernetes
+- **CI/CD**: Jenkins, GitLab CI, GitHub Actions
+- **Servers**: Tomcat, Jetty, Undertow, WebLogic
+- **Cloud**: AWS, Azure, Google Cloud
+
+### **Messaging & Streaming**
+- Apache Kafka
+- RabbitMQ
+- ActiveMQ
+- JMS
+
+### **Monitoring & Logging**
+- Logback/Log4j
+- SLF4J
+- Micrometer (metrics)
+- Spring Boot Actuator
+
+---
+
+## **Python Full Stack Tech Stack**
+
+### **Backend**
+- **Web Frameworks**:
+  - Django (batteries-included, most popular for full stack)
+  - Flask (microframework)
+  - FastAPI (modern, async)
+  - Pyramid
+  - Tornado (async)
+
+### **Frontend** (Python often paired with)
+- **JavaScript Frameworks**:
+  - React.js (most common pairing)
+  - Vue.js
+  - Angular
+- **Python-based Frontend** (less common):
+  - HTMX (with Django/Flask)
+  - Django Templates (server-side)
+  - Jinja2 templates
+
+### **ASGI/WSGI Servers**
+- Gunicorn
+- uWSGI
+- Daphne (for Django Channels)
+- Uvicorn (for ASGI apps like FastAPI)
+
+### **Database**
+- **SQL**: 
+  - PostgreSQL, MySQL
+  - ORMs: Django ORM, SQLAlchemy
+  - Migrations: Alembic, Django Migrations
+- **NoSQL**: 
+  - MongoDB (PyMongo, MongoEngine)
+  - Redis
+  - Cassandra
+
+### **API Development**
+- REST APIs (Django REST Framework, Flask-RESTful)
+- GraphQL (Graphene, Strawberry)
+- FastAPI (built-in OpenAPI/Swagger)
+- gRPC (grpcio)
+
+### **ORM & Data Access**
+- Django ORM
+- SQLAlchemy
+- Pony ORM
+- Peewee
+
+### **Authentication & Security**
+- Django Authentication
+- Flask-Login, Flask-Security
+- OAuthLib
+- PyJWT
+- PassLib (password hashing)
+
+### **Testing**
+- unittest (built-in)
+- pytest
+- Django Test Framework
+- Factory Boy
+- Hypothesis
+
+### **Task Queues & Background Jobs**
+- Celery (most popular)
+- RQ (Redis Queue)
+- Dramatiq
+- Huey
+
+### **DevOps & Deployment**
+- **Containers**: Docker, Kubernetes
+- **CI/CD**: GitHub Actions, GitLab CI, Jenkins
+- **Process Managers**: Systemd, Supervisor
+- **Cloud**: AWS (boto3), Google Cloud, Azure
+- **Platform as a Service**: Heroku, PythonAnywhere, Railway
+
+### **Data Science & ML Integration** (Python advantage)
+- NumPy, Pandas
+- Scikit-learn
+- TensorFlow/PyTorch (for ML-powered apps)
+
+### **Monitoring & Logging**
+- Logging module (built-in)
+- Structlog
+- Sentry SDK
+- Prometheus client
+
+---
+
+## **Common to Both Stacks**
+
+### **Version Control**
+- Git (GitHub, GitLab, Bitbucket)
+
+### **Package Management**
+- **Java**: Maven Central, Gradle
+- **Python**: PyPI, pip, Poetry, Pipenv
+
+### **API Documentation**
+- Swagger/OpenAPI
+- Postman
+
+### **Development Tools**
+- IDEs: IntelliJ IDEA, VS Code, PyCharm, Eclipse
+- Code Quality: SonarQube, Black (Python), Checkstyle (Java)
+- Containerization: Docker, Docker Compose
+
+### **Project Architecture**
+- MVC (Model-View-Controller)
+- Microservices
+- Monolith (common in Django)
+
+---
+
+## **Typical Stack Combinations**
+
+### **Java Popular Stack**
+- **Backend**: Spring Boot
+- **Frontend**: React + TypeScript
+- **Database**: PostgreSQL + Hibernate
+- **Build**: Maven/Gradle
+- **Deployment**: Docker + Kubernetes
+
+### **Python Popular Stack**
+- **Option 1 (Django)**: Django + Django REST Framework + React + PostgreSQL
+- **Option 2 (FastAPI)**: FastAPI + SQLAlchemy + React + PostgreSQL
+- **Option 3 (Full Django)**: Django (with templates) + HTMX + PostgreSQL
+
+### **Note**: 
+Modern full-stack development often uses JavaScript/TypeScript frontends regardless of backend language, with REST/GraphQL APIs connecting them. However, some Python frameworks like Django support full-stack development using their templating system without a separate JS framework.
